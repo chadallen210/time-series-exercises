@@ -15,7 +15,8 @@ def store_prep(df):
     # convert 'sale_date' column to datetime format
     df.sale_date = pd.to_datetime(df.sale_date, format = '%a, %d %b %Y %H:%M:%S %Z')
     
-    # plot the distribution of 'sale_amount' 
+    # plot the distribution of 'sale_amount' and 'item_price'
+    df[['sale_amount', 'item_price']].hist()
     df.sale_amount.hist()
     plt.title('Distribution of Sale Amount')
     plt.xlabel('sale_amount')
@@ -46,33 +47,8 @@ def prepare_opsd(df):
     # convert 'Date' column to datetime format
     df.Date = pd.to_datetime(df.Date, format = '%Y-%m-%d')
     
-    # plot the distribution of 'Consumption'
-    df.Consumption.hist()
-    plt.title('Distribution of Consumption')
-    plt.xlabel('Consumption')
-    plt.ylabel('Count')
-    plt.show()
-    
-    # plot the distribution of 'Wind'
-    df.Wind.hist()
-    plt.title('Distribution of Wind Production')
-    plt.xlabel('Wind')
-    plt.ylabel('Count')
-    plt.show()
-    
-    # plot the distribution of 'Solar'
-    df.Solar.hist()
-    plt.title('Distribution of Solar Production')
-    plt.xlabel('Solar')
-    plt.ylabel('Count')
-    plt.show()
-    
-    # plot the distribution of 'Wind+Solar'
-    df['Wind+Solar'].hist()
-    plt.title('Distribution of Wind+Solar Production')
-    plt.xlabel('Wind+Solar')
-    plt.ylabel('Count')
-    plt.show()
+    # plot the distribution of the variables
+    df.hist(figsize=(10, 10))
     
     # set the index to 'Date'
     df = df.set_index('Date').sort_index()
