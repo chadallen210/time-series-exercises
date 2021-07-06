@@ -17,19 +17,7 @@ def store_prep(df):
     
     # plot the distribution of 'sale_amount' and 'item_price'
     df[['sale_amount', 'item_price']].hist()
-    df.sale_amount.hist()
-    plt.title('Distribution of Sale Amount')
-    plt.xlabel('sale_amount')
-    plt.ylabel('Count')
-    plt.show()
-    
-    # plot the distribution of 'item_price'
-    df.item_price.hist()
-    plt.title('Distribution of Item Price')
-    plt.xlabel('item_price')
-    plt.ylabel('Count')
-    plt.show()
-    
+        
     # set the index to 'sale_date'
     df = df.set_index('sale_date').sort_index()
     
